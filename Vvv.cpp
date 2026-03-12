@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <conio.h>
 
 class Game {
 public:
@@ -20,7 +21,7 @@ public:
     char direction = 'd';
 
     std::vector<std::pair<int, int>> snake = {
-        {5, 5}, // голова
+        {5, 5}, 
         {4, 5},
         {3, 5}
     };
@@ -68,11 +69,8 @@ public:
             {
                 std::lock_guard<std::mutex> lock(mtx);
 
-#ifdef _WIN32
-                system("cls");
-#else
                 system("clear");
-#endif
+
 
                 for (int y = 0; y < height; y++) {
                     for (int x = 0; x < width; x++) {
@@ -144,8 +142,7 @@ public:
 
     void read_keys() {
         while (!Game_over) {
-            char c;
-            std::cin >> c;
+            int c = getch();
 
             std::lock_guard<std::mutex> lock(mtx);
 
