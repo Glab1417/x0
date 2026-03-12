@@ -15,8 +15,8 @@ public:
     int width = 20;
     int height = 10;
 
-    int apple_x = 7;
-    int apple_y = 3;
+    int apple_x;
+    int apple_y;
 
     char direction = 'd';
 
@@ -69,7 +69,7 @@ public:
             {
                 std::lock_guard<std::mutex> lock(mtx);
 
-                system("clear");
+                system("cls");
 
 
                 for (int y = 0; y < height; y++) {
@@ -95,7 +95,7 @@ public:
                     std::cout << '\n';
                 }
 
-                std::cout << "\nУправление: w a s d, выход: q\n";
+                std::cout << "\ncontrol: w a s d, quit: q\n";
             }
 
             std::this_thread::sleep_for(std::chrono::milliseconds(120));
